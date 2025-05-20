@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post Office Finder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e5799 0%,#207cca 100%);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+        }
+        .header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+        .search-container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .search-section {
+            margin-bottom: 20px;
+        }
+        .search-section h2 {
+            color: #1e5799;
+            border-bottom: 2px solid #e1e5eb;
+            padding-bottom: 8px;
+            font-size: 1.3em;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background: linear-gradient(135deg, #1e5799 0%,#207cca 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .error {
+            color: #d32f2f;
+            background-color: #fde8e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IndiaPost Office Locator</h1>
+        <p>Find any post office in India using name or PIN code</p>
+    </div>
+
+    <div class="search-container">
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="search-section">
+                <h2>Search by Name</h2>
+                <div class="form-group">
+                    <label for="name">Office Name:</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Mumbai GPO">
+                </div>
+            </div>
+
+            <div class="search-section">
+                <h2>Search by PIN Code</h2>
+                <div class="form-group">
+                    <label for="pincode">6-digit PIN:</label>
+                    <input type="text" id="pincode" name="pincode" placeholder="e.g. 400001" maxlength="6">
+                </div>
+            </div>
+
+            <button type="submit">Find Post Office</button>
+        </form>
+    </div>
+</body>
+</html>
